@@ -26,7 +26,9 @@ void VBUSDecoder::clearMaxValues()
 bool VBUSDecoder::initialise()
 {
 
-  Serial1.begin(9600);
+  Serial1.begin(9600, SWSERIAL_8N1, D3, -1, false, 256); //(speed, SerialConfig, Rx pin , Tx pin, invert logic, buffer size)
+  Serial1.enableIntTx(false);
+	
   clearMaxValues();
   return true;
 } // end void initialise()
